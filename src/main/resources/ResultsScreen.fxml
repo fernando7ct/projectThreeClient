@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ResultsController">
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding:20;">
+            <Label fx:id="resultMessageLabel" style="-fx-font-size:18;"/>
+            <Label fx:id="roundWinningsLabel" style="-fx-font-size:16;"/>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Play Another Game" onAction="#playAnotherGame"/>
+                <Button text="Exit" onAction="#exitGame"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
