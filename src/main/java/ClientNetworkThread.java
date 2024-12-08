@@ -54,6 +54,7 @@ public class ClientNetworkThread extends Thread {
             if (controller != null) {
                 controller.showMessage("Connection lost or unable to connect.");
             }
+            System.err.println("Network error: " + e.getMessage());
         }
     }
 
@@ -69,6 +70,7 @@ public class ClientNetworkThread extends Thread {
             if (controller != null) {
                 controller.showMessage("Error sending to server.");
             }
+            System.err.println("Error sending info to server: " + e.getMessage());
         }
     }
 }

@@ -21,6 +21,7 @@
                 <Button text="Exit" onAction="#exitProgram"/>
             </HBox>
             <Label fx:id="errorLabel" text="" style="-fx-text-fill:red;"/>
+            <ProgressIndicator fx:id="loadingIndicator" visible="false"/> <!-- Added ProgressIndicator -->
         </VBox>
     </center>
 </BorderPane>

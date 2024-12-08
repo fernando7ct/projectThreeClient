@@ -34,9 +34,16 @@ public class ClientController {
      */
     public void handleServerUpdate(PokerInfo info) {
         Platform.runLater(() -> {
+            // Logging for debugging
+            System.out.println("Received from server: Action = " + info.getAction() + ", Message = \"" + info.getMessage() + "\", Balance = $" + info.getPlayerBalance());
+
             if (info.getAction() == PokerInfo.Action.RESULTS) {
                 // Round ended, show results screen
                 mainApp.showResultsScreen(info.getMessage(), info.getRoundWinnings());
+
+                // **Clear card images to prevent glitches**
+                clearInfoAndCards();
+
                 return;
             }
             // Update UI elements with received information
@@ -202,11 +209,24 @@ public class ClientController {
     @FXML
     private void handleNewLook() {
         Region root = (Region) infoDisplay.getScene().getRoot();
+
         if (newLookEnabled) {
-            root.setStyle("-fx-background-color: green;");
+            // Revert to the original style
+            root.setStyle("-fx-background-color: green; -fx-font-family: Arial; -fx-font-size: 14px;");
+            infoDisplay.setStyle("-fx-text-fill: black;");
+            placeBetButton.setStyle(""); // Reset button styles
+            dealButton.setStyle("");
+            playButton.setStyle("");
+            foldButton.setStyle("");
             newLookEnabled = false;
         } else {
-            root.setStyle("-fx-background-color: red;");
+            // Apply the new look
+            root.setStyle("-fx-background-color: linear-gradient(to bottom, #ff7f50, #ff4500); -fx-font-family: 'Courier New'; -fx-font-size: 16px;");
+            infoDisplay.setStyle("-fx-text-fill: white; -fx-control-inner-background: #333333;");
+            placeBetButton.setStyle("-fx-background-color: #ff4500; -fx-text-fill: white; -fx-font-weight: bold;");
+            dealButton.setStyle("-fx-background-color: #ff4500; -fx-text-fill: white; -fx-font-weight: bold;");
+            playButton.setStyle("-fx-background-color: #32cd32; -fx-text-fill: white; -fx-font-weight: bold;");
+            foldButton.setStyle("-fx-background-color: #b22222; -fx-text-fill: white; -fx-font-weight: bold;");
             newLookEnabled = true;
         }
     }
@@ -237,7 +257,7 @@ public class ClientController {
         pPairPlusLabel.setText("$0");
         pPlayLabel.setText("$0");
 
-        playerBalanceLabel.setText("100");
+        // **Ensure balance is not reset here; it's managed by the server**
     }
 
     /**

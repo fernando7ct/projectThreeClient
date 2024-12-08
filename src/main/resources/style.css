@@ -1,0 +1,36 @@
+/* Original Look /
+.root.original {
+    -fx-background-color: green;
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+}
+
+.text-area.original {
+    -fx-text-fill: black;
+}
+
+/ New Look */
+.root.new-look {
+    -fx-background-color: linear-gradient(to bottom, #ff7f50, #ff4500);
+    -fx-font-family: "Courier New";
+    -fx-font-size: 16px;
+}
+
+.text-area.new-look {
+    -fx-text-fill: white;
+    -fx-control-inner-background: #333333;
+}
+
+.button.new-look {
+    -fx-background-color: #ff4500;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button.new-look.play {
+    -fx-background-color: #32cd32;
+}
+
+.button.new-look.fold {
+    -fx-background-color: #b22222;
+}
